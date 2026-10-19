@@ -40,6 +40,26 @@ function getConsoles() {
                         card.appendChild(p)
                         cards.appendChild(card)
                     });
+
+                    //Summary Line
+                    let summary = document.getElementById("summaryLine")
+                    let consoles = consoleObj.consoles
+
+                    let oldest = consoles[0]
+                    let newest = consoles[0]
+
+                    for (let i = 1; i < consoles.length; i++) {
+                        if (consoles[i].year < oldest.year) {
+                            oldest = consoles[i]
+                        }
+                        if (consoles[i].year > newest.year) {
+                            newest = consoles[i]
+                        }
+                    }
+
+                    if (summary) {
+                        summary.textContent = `There are ${consoles.length} consoles. The oldest console is the ${oldest.name} which came out in ${oldest.year}. The newest console is the ${newest.name} which came out in ${newest.year}`
+                    }
                 }
                 catch (error) {
                     console.error("Failed to Parse JSON:", error)

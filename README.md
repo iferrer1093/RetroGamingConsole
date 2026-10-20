@@ -1,0 +1,3 @@
+Github Repo Link: https://github.com/iferrer1093/RetroGamingConsole
+The script creates the XMLHttpRequest object and sets up a get connection to the API with xhr.open() and sends the request with xhr.send(). In onreadystatechange it monitors the request until xhr.readyState reaches state 4 and checks that xhr.status is 200. Then it'll parse the raw text into JSON via JSON.parse().
+The summary assumes that the first console in the array from the API is the oldest and newest console. The for loop iterates through the rest of the consoles and compares the year of their release date against the stored records which then updates the oldest or newest whenever a greater year is found. 

@@ -1,0 +1,52 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #aa8c8c;
+    margin: 45px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #16010c;
+}
+
+#loadConsoles {
+    background-color: #a8a5ed;
+    border: none;
+    color: #2d0f35;
+    border-radius: 10px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+#loadConsoles:hover {
+    background-color: #ebb4ffd5;
+}
+
+#cards {
+    display: grid;
+    justify-content: center;
+    padding: 20px 25px;
+    border-radius: 20px;
+}
+
+#cards > div {
+    background: #6D1A36;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#cards img {
+    margin-bottom: 15px;
+    width: 50%;
+    height: 50%;
+}
+
+#cards h2 {
+    font-size: 30px;
+}
+
+#cards p {
+    font-size: 20px;
+}

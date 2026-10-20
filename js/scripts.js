@@ -6,9 +6,19 @@ function getConsoles() {
     let xhr = new XMLHttpRequest()
     xhr.open("GET", "https://ozarktechwebdev.com/api/consoles.json")
     xhr.timeout = 10000
+    let cards = document.getElementById("cards");
+    let summary = document.getElementById("summaryLine");
+    let loading = document.getElementById("error")
+
+    if (cards) cards.innerHTML = "";
+    if (summary) summary.textContent = "";
+    if (loading) loading.textContent = "Loading...";
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) { // The request has finished.
+            if (loading) {
+                loading.textContent = ""
+            }
             if (xhr.status == 200) {
                 try {
                     let consoleJSON = xhr.responseText
@@ -17,10 +27,6 @@ function getConsoles() {
                     console.log("Parsed Object:", consoleObj);
                     console.log("Console Array:", consoleObj.consoles);
                     console.log("Length of Array:", consoleObj.consoles.length)
-
-                    let cards = document.getElementById("cards")
-
-                    cards.innerHTML = ""
 
                     consoleObj.consoles.forEach(console => {
                         let card = document.createElement("div")
@@ -63,9 +69,13 @@ function getConsoles() {
                 }
                 catch (error) {
                     console.error("Failed to Parse JSON:", error)
+                    if (summary) summary.textContent = "Error parsing data"
                 }
             } else {
                 console.log("Request failed with status " + xhr.status)
+                if (summary) {
+                    summary.textContent = `Failed to load consoles from API (Status Code: ${xhr.status})`
+                }
             }
         }
     }
